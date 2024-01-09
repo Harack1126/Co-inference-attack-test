@@ -74,7 +74,7 @@ def white_box_attack_test(model, DEVICE, data_loader, num, point_list):
             ax[i].imshow(recover_image, cmap="gray")
             ax[i].axis("off")
         plt.tight_layout()
-        plt.savefig(save_path + f"Recover_Image_In_Point{point}")
+        plt.savefig(save_path + f"WhiteBox_Recover_Point{point}")
         plt.close()
 
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     model = LeNet().to(DEVICE)
     optimizer = optim.Adam(model.parameters())
     train_loader, test_loader = get_data(batch_size)
-    train_model(model, train_loader, optimizer, epoch)
+    # train_model(model, train_loader, optimizer, epoch)
     model.load_state_dict(torch.load("./models/LeNet.pth"))
     test_model(model, test_loader)
     white_box_attack_test(model, DEVICE, test_loader, attack_num, partition_point_list)
