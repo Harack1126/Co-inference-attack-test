@@ -1,9 +1,8 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-import matplotlib.pyplot as plt
 
 
-def get_data(batch_size):
+def get_MNIST_dataset(batch_size):
     transform = transforms.Compose(
         [
             transforms.ToTensor(),
